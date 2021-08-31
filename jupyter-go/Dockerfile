@@ -3,7 +3,7 @@ FROM ghcr.io/pluralsh/kubeflow-notebooks-jupyter:v0.1.6
 USER root
 
 # args - software versions
- # renovate: datasource=docker depName=golang versioning=loose
+ # renovate: datasource=docker depName=golang versioning=docker
 ARG GO_VERSION=1.16.5
  # renovate: datasource=github-tags depName=gopherdata/gophernotes versioning=semver
 ARG GOPHERNOTES_VERSION=v0.7.3
