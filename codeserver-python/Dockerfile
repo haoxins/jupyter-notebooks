@@ -1,4 +1,4 @@
-FROM kubeflownotebooks/codeserver:v0.3.53
+FROM ghcr.io/pluralsh/kubeflow-notebooks-codeserver:v0.1.6
 
 USER root
 
