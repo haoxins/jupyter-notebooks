@@ -109,12 +109,12 @@ jobs:
     -
         name: Checkout
         uses: actions/checkout@v2
-    # - 
-    #   name: Get latest tag
-    #   id: latest_tag
-    #   uses: DavidSpek/gha-get-docker-hub-tags@0.1.15
-    #   with:
-    #     img: 'ghcr.io/pluralsh/kubeflow-notebooks-${{ matrix.project }}'
+    - 
+      name: Get latest tag
+      id: latest_tag
+      uses: DavidSpek/gha-get-docker-hub-tags@0.1.15
+      with:
+        img: 'ghcr.io/pluralsh/kubeflow-notebooks-${{ matrix.project }}'
     -
       name: Docker meta
       id: meta
@@ -127,7 +127,7 @@ jobs:
         tags: |
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{raw}},value=${{ matrix.version }}
+          type=semver,pattern={{raw}},value=${{ steps.latest_tag.outputs.new_v_minor }}
           type=sha
     -
       name: Set up QEMU
