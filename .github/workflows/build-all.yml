@@ -127,7 +127,7 @@ jobs:
         tags: |
           type=ref,event=branch
           type=ref,event=pr
-          type=semver,pattern={{raw}},value=${{ steps.latest_tag.outputs.new_v_minor }}
+          type=semver,pattern={{raw}},value=${{ matrix.version }}
           type=sha
     -
       name: Set up QEMU
