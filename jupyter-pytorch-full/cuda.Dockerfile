@@ -1,4 +1,4 @@
-FROM ghcr.io/pluralsh/kubeflow-notebooks-jupyter-pytorch-cuda:v1.0.3
+FROM ghcr.io/pluralsh/kubeflow-notebooks-jupyter-pytorch-cuda:v1.0.4
 
 USER root
 
