@@ -1,4 +1,4 @@
-FROM ghcr.io/pluralsh/kubeflow-notebooks-rstudio:v1.0.1
+FROM ghcr.io/pluralsh/kubeflow-notebooks-rstudio:v1.0.2
 
 # args - software versions
 ARG R_TIDYVERSE_VERSION="1.3.1"
