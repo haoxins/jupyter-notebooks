@@ -1,4 +1,5 @@
 # kubeflow packages
+elyra==3.2.2
 kfp==1.8.4
 kfp-server-api==1.7.1
 kfserving==0.6.1
