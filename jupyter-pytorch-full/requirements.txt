@@ -1,12 +1,12 @@
 # kubeflow packages
 elyra==3.2.2
-kfp==1.8.4
+kfp==1.8.9
 kfp-server-api==1.7.1
 kfserving==0.6.1
 
 # common packages
 bokeh==2.4.1
-cloudpickle==1.6.0
+cloudpickle==2.0.0
 dill==0.3.4
 ipympl==0.8.2
 ipywidgets==7.6.5
