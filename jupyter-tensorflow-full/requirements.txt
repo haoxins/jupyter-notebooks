@@ -1,8 +1,8 @@
 # kubeflow packages
 elyra==3.2.2
-kfp==1.8.9
-kfp-server-api==1.7.1
-kfserving==0.6.1
+kfp==1.8.11
+kfp-server-api==1.8.1
+kserve==0.8.0
 
 # common packages
 bokeh==2.4.2
