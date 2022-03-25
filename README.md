@@ -1,3 +1,8 @@
+
+* This is an open source fork of
+  [pluralsh/kubeflow-notebooks](https://github.com/pluralsh/kubeflow-notebooks)
+  with new features, bug fixes and different targets.
+
 # Example Notebook Servers
 
 > 🛑️️ These server images are provided as __examples only__ and are supported on a best-effort basis.
@@ -6,8 +11,6 @@
 ## Overview
 
 In this folder, we have tried to make an extendable image structure which you can easily augment with additional tools and packages.
-
-![flow-chart of kubeflow notebook server images](image-flow-chart.png)
 
 __The following images are considered 'base' images, which you can extend:__
 
