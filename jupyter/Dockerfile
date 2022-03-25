@@ -19,17 +19,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-# setup environment for conda
-ENV CONDA_DIR /opt/conda
-ENV PATH "${CONDA_DIR}/bin:${PATH}"
-RUN mkdir -p ${CONDA_DIR} \
- && echo ". /opt/conda/etc/profile.d/conda.sh" >> ${HOME}/.bashrc \
- && echo ". /opt/conda/etc/profile.d/conda.sh" >> /etc/profile \
- && echo "conda activate base" >> ${HOME}/.bashrc \
- && echo "conda activate base" >> /etc/profile \
- && chown -R ${NB_USER}:users ${CONDA_DIR} \
- && chown -R ${NB_USER}:users ${HOME}
-
 # switch to NB_UID for installs
 USER ${NB_UID}
 
