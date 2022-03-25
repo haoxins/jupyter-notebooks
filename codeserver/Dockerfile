@@ -10,7 +10,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && rm -rf /var/lib/apt/lists/*
 
 # args - software versions
- # renovate: datasource=github-tags depName=cdr/code-server versioning=semver
 ARG CODESERVER_VERSION=v3.12.0
 
 # install - code-server
