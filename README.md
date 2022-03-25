@@ -1,42 +1,39 @@
+## Overview
+
 
 * This is an open source fork of
   [pluralsh/kubeflow-notebooks](https://github.com/pluralsh/kubeflow-notebooks)
   with new features, bug fixes and different targets.
+* We have tried to make an extendable image structure which you can
+  easily augment with additional tools and packages.
 
-# Example Notebook Servers
-
-> 🛑️️ These server images are provided as __examples only__ and are supported on a best-effort basis.
-> Contributions are greatly appreciated.
-
-## Overview
-
-In this folder, we have tried to make an extendable image structure which you can easily augment with additional tools and packages.
-
-__The following images are considered 'base' images, which you can extend:__
+* **The following images are considered base images, which you can extend:**
 
 Name | Description
 --- | ---
 [./base](./base) | the common base for all other images
 [./jupyter](./jupyter) | the base [JupyterLab](https://github.com/jupyterlab/jupyterlab) image
 [./codeserver](./codeserver) | the base [code-server](https://github.com/cdr/code-server) (Visual Studio Code) image
-[./rstudio](./rstudio) | the base [RStudio](https://github.com/rstudio/rstudio) image
 
-__Important points about the images:__
-
-- they make use of the [s6-overlay](https://github.com/just-containers/s6-overlay) init system
-- they all run as the non-root `jovyan` user
+* **Important points about the images:**
+  - They make use of the [s6-overlay](https://github.com/just-containers/s6-overlay) init system
+  - They all run as the non-root `jovyan` user
 
 ## How do I extend these images?
 
-> ⚠️ any changes made by users __after spawning__ a Kubeflow notebook will only last the lifetime of the pod, unless they are installed into a PVC-backed directory
+> Any changes made by users __after spawning__ a Kubeflow notebook will only last the
+> lifetime of the pod, unless they are installed into a PVC-backed directory
 
-### Adding conda/pip packages
+### Adding pip packages
 
-Extend one of the base images and install any `pip` or `conda` packages your Kubeflow Notebook users are likely to need.
+Extend one of the base images and install any `pip` packages your Kubeflow Notebook users are likely to need.
 
-As a guide, look at [jupyter-pytorch-full.cpu](./jupyter-pytorch-full/cpu.Dockerfile) for a `pip install ...` example, and the [rstudio-tidyverse](./rstudio-tidyverse/Dockerfile) for `conda install ...`.
+As a guide, look at [jupyter-pytorch-full.cpu](./jupyter-pytorch-full/cpu.Dockerfile) for a `pip install ...` example,
+and the [rstudio-tidyverse](./rstudio-tidyverse/Dockerfile) for `conda install ...`.
 
-__WARNING:__ a common cause of errors is users running `pip install --user ...`, causing the home-directory (which is backed by a PVC) to contain a different or incompatible version of a package contained in  `/opt/conda/...`
+__WARNING:__ a common cause of errors is users running `pip install --user ...`,
+causing the home-directory (which is backed by a PVC) to contain a different or
+incompatible version of a package contained in  `/opt/conda/...`
 
 ### Adding apt-get packages
 
@@ -79,8 +76,8 @@ For example, here is a `run` script for `code-server`:
 
 export SHELL='/bin/bash'
 exec s6-setuidgid $NB_USER \
-     /usr/local/bin/code-server \
-     --bind-addr 0.0.0.0:8888 \
-     --disable-telemetry \
-     --auth none
+  /usr/local/bin/code-server \
+  --bind-addr 0.0.0.0:8888 \
+  --disable-telemetry \
+  --auth none
 ```
