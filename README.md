@@ -3,22 +3,12 @@
 * This is an open source **fork** of
   [pluralsh/kubeflow-notebooks](https://github.com/pluralsh/kubeflow-notebooks)
   with new features, bug fixes and different targets.
-* We have tried to make an extendable image structure which you can
-  easily augment with additional tools and packages.
 
 * The following images are considered base images, which you can extend:
-
-Name | Description
---- | ---
-[./base](./base) | the common base for all other images
-[./codeserver](./codeserver) | the base [code-server](https://github.com/cdr/code-server) (VSCode) image
-[./jupyter](./jupyter) | the base [JupyterLab](https://github.com/jupyterlab/jupyterlab) image
-
-* Important points about the images:
-  - They make use of the
-    [s6-overlay][s6 overlay link]
-    init system
-  - They all run as the non-root `jovyan` user
+  - [base](./base): The common base for all other images
+  - [jupyter](./jupyter): The base **JupyterLab** image
+  - [codeserver](./codeserver): The base
+    [code-server][code server link] (VSCode) image
 
 ## How do I extend these images?
 
@@ -29,7 +19,7 @@ Name | Description
 ### Adding pip packages
 
 * Extend one of the base images and install any
-  `pip` packages your Kubeflow Notebook
+  `pip` packages your Kubeflow notebook
   users are likely to need.
 
 * As a guide, look at
@@ -39,7 +29,7 @@ Name | Description
 ### Adding apt-get packages
 
 * Extend one of the base images and install any
-  `apt-get` packages your Kubeflow Notebook
+  `apt-get` packages your Kubeflow notebook
   users are likely to need.
 
 * WARNING: ensure you swap to `root` in the
@@ -116,3 +106,4 @@ exec s6-setuidgid $NB_USER \
 [s6 overlay link]: https://github.com/just-containers/s6-overlay
 [s6 container environment link]: https://github.com/just-containers/s6-overlay#container-environment
 [s6 writing a service script link]: https://github.com/just-containers/s6-overlay#writing-a-service-script
+[code server link]: https://github.com/coder/code-server
