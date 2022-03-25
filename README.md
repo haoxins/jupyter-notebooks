@@ -16,7 +16,7 @@ Name | Description
 
 * Important points about the images:
   - They make use of the
-    [s6-overlay](https://github.com/just-containers/s6-overlay)
+    [s6-overlay][s6 overlay link]
     init system
   - They all run as the non-root `jovyan` user
 
@@ -36,11 +36,6 @@ Name | Description
   [jupyter-pytorch-full.cpu](./jupyter-pytorch-full/cpu.Dockerfile)
   for a `pip install ...` example.
 
-* WARNING: a common cause of errors is users running
-  `pip install --user ...`, causing the home-directory
-  (which is backed by a PVC) to contain a different or
-  incompatible version of a package contained in  `/opt/conda/...`
-
 ### Adding apt-get packages
 
 * Extend one of the base images and install any
@@ -58,8 +53,8 @@ Name | Description
   or advanced users might want to add additional
   services that run inside the container.
 * To make this easy, we use the
-  [s6-overlay](https://github.com/just-containers/s6-overlay).
-* The [s6-overlay](https://github.com/just-containers/s6-overlay)
+  [s6-overlay][s6 overlay link].
+* The [s6-overlay][s6 overlay link]
   differs from other init systems, such as the popular
   [tini](https://github.com/krallin/tini).
 * While `tini` was created to handle a single process running
@@ -75,7 +70,7 @@ Name | Description
   and are executed in ascending alphanumeric order.
 
 * This script uses the
-  [with-contenv](https://github.com/just-containers/s6-overlay#container-environment)
+  [with-contenv][s6 container environment link]
   helper so that environment variables (passed to container)
   are available in the script.
 * The purpose of this script is to snapshot any `KUBERNETES_*`
@@ -93,7 +88,7 @@ Name | Description
   [jupyter/s6/services.d/jupyterlab](jupyter/s6/services.d/jupyterlab)
   which is used to start JupyterLab itself.
 * For more information about the `run` and `finish` scripts,
-  please see the [s6-overlay documentation](https://github.com/just-containers/s6-overlay#writing-a-service-script).
+  please see the [s6-overlay documentation][s6 writing a service script link].
 
 * WARNING: our example images run `s6-overlay` as `$NB_USER`
   not `root`, meaning any files or scripts related to
@@ -117,3 +112,7 @@ exec s6-setuidgid $NB_USER \
   --disable-telemetry \
   --auth none
 ```
+
+[s6 overlay link]: https://github.com/just-containers/s6-overlay
+[s6 container environment link]: https://github.com/just-containers/s6-overlay#container-environment
+[s6 writing a service script link]: https://github.com/just-containers/s6-overlay#writing-a-service-script
