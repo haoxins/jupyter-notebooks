@@ -18,39 +18,12 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-# setup environment for conda
-ENV CONDA_DIR /opt/conda
-ENV PATH "${CONDA_DIR}/bin:${PATH}"
-RUN mkdir -p ${CONDA_DIR} \
- && chown -R ${NB_USER}:users ${CONDA_DIR}
-
 USER $NB_UID
-
-# install - conda, pip, python
-RUN curl -sL "https://github.com/conda-forge/miniforge/releases/download/${MINIFORGE_VERSION}/Miniforge3-${MINIFORGE_VERSION}-Linux-${MINIFORGE_ARCH}.sh" -o /tmp/Miniforge3.sh \
- && curl -sL "https://github.com/conda-forge/miniforge/releases/download/${MINIFORGE_VERSION}/Miniforge3-${MINIFORGE_VERSION}-Linux-${MINIFORGE_ARCH}.sh.sha256" -o /tmp/Miniforge3.sh.sha256 \
- && echo "$(cat /tmp/Miniforge3.sh.sha256 | awk '{ print $1; }') /tmp/Miniforge3.sh" | sha256sum --check \
- && rm /tmp/Miniforge3.sh.sha256 \
- && /bin/bash /tmp/Miniforge3.sh -b -f -p ${CONDA_DIR} \
- && rm /tmp/Miniforge3.sh \
- && conda config --system --set auto_update_conda false \
- && conda config --system --set show_channel_urls true \
- && echo "conda ${MINIFORGE_VERSION:0:-2}" >> ${CONDA_DIR}/conda-meta/pinned \
- && echo "python ${PYTHON_VERSION}" >> ${CONDA_DIR}/conda-meta/pinned \
- && conda install -y -q \
-    python=${PYTHON_VERSION} \
-    conda=${MINIFORGE_VERSION:0:-2} \
-    pip=${PIP_VERSION} \
- && conda update -y -q --all \
- && conda clean -a -f -y \
- && chown -R ${NB_USER}:users ${CONDA_DIR} \
- && chown -R ${NB_USER}:users ${HOME}
 
 # install - requirements.txt
 COPY --chown=jovyan:users requirements.txt /tmp
 RUN python3 -m pip install -r /tmp/requirements.txt --quiet --no-cache-dir \
  && rm -f /tmp/requirements.txt \
- && chown -R ${NB_USER}:users ${CONDA_DIR} \
  && chown -R ${NB_USER}:users ${HOME}
 
 # install - codeserver extensions

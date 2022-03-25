@@ -1,0 +1,21 @@
+name: Build Notebook Images
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+    - "v*"
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  build-matrix:
+    name: Create Build Matrix
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      id: set-matrix
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
