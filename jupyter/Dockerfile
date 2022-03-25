@@ -8,17 +8,6 @@ ARG MINIFORGE_VERSION=4.10.3-7
 ARG PIP_VERSION=21.1.2
 ARG PYTHON_VERSION=3.8.10
 
-# install -- node.js
-RUN export DEBIAN_FRONTEND=noninteractive \
- && curl -sL "https://deb.nodesource.com/gpgkey/nodesource.gpg.key" | apt-key add - \
- && echo "deb https://deb.nodesource.com/node_14.x focal main" > /etc/apt/sources.list.d/nodesource.list \
- && apt-get -yq update \
- && apt-get -yq upgrade \
- && apt-get -yq install --no-install-recommends \
-    nodejs \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
-
 # switch to NB_UID for installs
 USER ${NB_UID}
 

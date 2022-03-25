@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 cd "${HOME}"
-exec /opt/conda/bin/jupyter lab \
+exec /usr/local/bin/jupyter lab \
   --notebook-dir="${HOME}" \
   --ip=0.0.0.0 \
   --no-browser \
