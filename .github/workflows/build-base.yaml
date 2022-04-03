@@ -48,4 +48,4 @@ jobs:
         #   .github/workflows/docker-bake-base.hcl
         #   ${{ steps.meta.outputs.bake-file }}
         targets: bake-platform
-          push: ${{ github.event_name != "pull_request" }}
+          push: ${{ github.event_name != 'pull_request' }}
