@@ -10,7 +10,6 @@ ENV SHELL /bin/bash
 # Args - Software versions
 ARG KUBECTL_ARCH="amd64"
 ARG KUBECTL_VERSION=v1.23.5
-ARG S6_ARCH="amd64"
 ARG S6_VERSION=v3.1.0.1
 
 # Set shell to bash
@@ -27,31 +26,25 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     ca-certificates \
     curl \
     git \
-    gnupg \
-    gnupg2 \
     locales \
     lsb-release \
-    nano \
+    python3 \
+    python3-pip \
     software-properties-common \
     tzdata \
     unzip \
     vim \
     wget \
+    xz-utils \
     zip \
-    python3 \
-    python3-pip \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 # Install - s6 overlay
-RUN export GNUPGHOME=/tmp/ \
-  && curl -sL "https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-${S6_ARCH}-installer" -o /tmp/s6-overlay-${S6_VERSION}-installer \
-  && curl -sL "https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-${S6_ARCH}-installer.sig" -o /tmp/s6-overlay-${S6_VERSION}-installer.sig \
-  && gpg --keyserver keys.gnupg.net --keyserver pgp.surfnet.nl --recv-keys 6101B2783B2FD161 \
-  && gpg -q --verify /tmp/s6-overlay-${S6_VERSION}-installer.sig /tmp/s6-overlay-${S6_VERSION}-installer \
-  && chmod +x /tmp/s6-overlay-${S6_VERSION}-installer \
-  && /tmp/s6-overlay-${S6_VERSION}-installer / \
-  && rm /tmp/s6-overlay-${S6_VERSION}-installer.sig /tmp/s6-overlay-${S6_VERSION}-installer
+ADD https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-noarch.tar.xz /tmp
+RUN tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz
+ADD https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-x86_64.tar.xz /tmp
+RUN tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz
 
 # Install - kubectl
 RUN curl -sL "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${KUBECTL_ARCH}/kubectl" -o /usr/local/bin/kubectl \
@@ -65,7 +58,8 @@ RUN useradd -M -s /bin/bash -N -u ${NB_UID} ${NB_USER} \
   && mkdir -p ${HOME} \
   && chown -R ${NB_USER}:users ${HOME} \
   && chown -R ${NB_USER}:users /usr/local/bin \
-  && chown -R ${NB_USER}:users /etc/s6
+  && chown -R ${NB_USER}:users /etc/s6-overlay \
+  && chown -R ${NB_USER}:users /command
 
 # Set locale configs
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \

@@ -7,8 +7,6 @@
 * The following images are considered base images, which you can extend:
   - [base](./base): The common base for all other images
   - [jupyter](./jupyter): The base **JupyterLab** image
-  - [codeserver](./codeserver): The base
-    [code-server][code server link] (VSCode) image
 
 ## How do I extend these images?
 
@@ -89,21 +87,6 @@
     at the end, and then use `s6-setuidgid` to run the
     user-facing services as `$NB_USER`.
 
-* For example, here is a `run` script for `code-server`:
-
-```bash
-#!/usr/bin/with-contenv bash
-
-export SHELL="/bin/bash"
-
-exec s6-setuidgid $NB_USER \
-  /usr/local/bin/code-server \
-  --bind-addr 0.0.0.0:8888 \
-  --disable-telemetry \
-  --auth none
-```
-
 [s6 overlay link]: https://github.com/just-containers/s6-overlay
 [s6 container environment link]: https://github.com/just-containers/s6-overlay#container-environment
 [s6 writing a service script link]: https://github.com/just-containers/s6-overlay#writing-a-service-script
-[code server link]: https://github.com/coder/code-server

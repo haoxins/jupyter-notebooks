@@ -36,7 +36,7 @@ jobs:
         images: |
           ghcr.io/${{ github.repository }}
         tags: |
-          type=raw,value=main,enable=${{ github.ref == "refs/heads/main" }}
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
@@ -48,4 +48,4 @@ jobs:
           .github/workflows/docker-bake-base.hcl
           ${{ steps.meta.outputs.bake-file }}
         targets: bake-platform
-          push: ${{ github.event_name != "pull_request" }}
+        push: ${{ github.event_name != 'pull_request' }}
