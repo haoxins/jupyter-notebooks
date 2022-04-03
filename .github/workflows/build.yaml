@@ -42,7 +42,7 @@ jobs:
           type=semver,pattern={{major}}.{{minor}}
 
     - name: Build and push Docker images (supported platforms)
-      uses: docker/bake-action@v1
+      uses: docker/bake-action@v1.7
       with:
         files: |
           .github/workflows/docker-bake.hcl
