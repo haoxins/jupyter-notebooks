@@ -2,7 +2,8 @@ name: Build Notebook Images
 
 on:
   push:
-    branches: [ main ]
+    branches:
+    - main
     tags:
     - "v*"
   pull_request:
@@ -10,12 +11,41 @@ on:
     - main
 
 jobs:
-  build-matrix:
-    name: Create Build Matrix
+  build-base-image:
+    name: Build Base Image
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      id: set-matrix
+    - name: Check out the repo
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name: Set up Docker buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to the Container registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/${{ github.repository }}
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == "refs/heads/main" }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+
+    - name: Build and push Docker images (supported platforms)
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/docker-bake.hcl
+          ${{ steps.meta.outputs.bake-file }}
+        targets: bake-platform
+          push: ${{ github.event_name != "pull_request" }}
