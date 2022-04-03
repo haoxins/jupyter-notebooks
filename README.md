@@ -92,7 +92,7 @@
 * For example, here is a `run` script for `code-server`:
 
 ```bash
-#!/usr/bin/with-contenv bash
+#!/command/with-contenv bash
 
 export SHELL="/bin/bash"
 
