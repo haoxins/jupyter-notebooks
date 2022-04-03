@@ -42,10 +42,10 @@ jobs:
           type=semver,pattern={{major}}.{{minor}}
 
     - name: Build and push Docker images (supported platforms)
-      uses: docker/bake-action@v1.7
+      uses: docker/bake-action@v1.7.0
       with:
         files: |
-          .github/workflows/docker-bake.hcl
+          .github/workflows/docker-bake-base.hcl
           ${{ steps.meta.outputs.bake-file }}
         targets: bake-platform
           push: ${{ github.event_name != "pull_request" }}
