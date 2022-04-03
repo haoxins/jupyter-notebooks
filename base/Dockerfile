@@ -10,7 +10,6 @@ ENV SHELL /bin/bash
 # Args - Software versions
 ARG KUBECTL_ARCH="amd64"
 ARG KUBECTL_VERSION=v1.23.5
-ARG S6_ARCH="amd64"
 ARG S6_VERSION=v3.1.0.1
 
 # Set shell to bash
@@ -42,7 +41,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && rm -rf /var/lib/apt/lists/*
 
 # Install - s6 overlay
-
 ADD https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-noarch.tar.xz /tmp
 RUN tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz
 ADD https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-x86_64.tar.xz /tmp
@@ -60,7 +58,8 @@ RUN useradd -M -s /bin/bash -N -u ${NB_UID} ${NB_USER} \
   && mkdir -p ${HOME} \
   && chown -R ${NB_USER}:users ${HOME} \
   && chown -R ${NB_USER}:users /usr/local/bin \
-  && chown -R ${NB_USER}:users /etc/s6
+  && chown -R ${NB_USER}:users /etc/s6-overlay \
+  && chown -R ${NB_USER}:users /command
 
 # Set locale configs
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
