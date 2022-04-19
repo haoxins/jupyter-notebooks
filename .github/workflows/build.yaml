@@ -44,8 +44,27 @@ jobs:
     - name: Build and push Docker images (supported platforms)
       uses: docker/bake-action@v1
       with:
-        files: |
+        files:
+        - |
           .github/workflows/docker-bake-base.hcl
+          ${{ steps.meta.outputs.bake-file }}
+        - |
+          .github/workflows/docker-bake-jupyter.hcl
+          ${{ steps.meta.outputs.bake-file }}
+        - |
+          .github/workflows/docker-bake-scipy.hcl
+          ${{ steps.meta.outputs.bake-file }}
+        - |
+          .github/workflows/docker-bake-tensorflow.hcl
+          ${{ steps.meta.outputs.bake-file }}
+        - |
+          .github/workflows/docker-bake-tensorflow-full.hcl
+          ${{ steps.meta.outputs.bake-file }}
+        - |
+          .github/workflows/docker-bake-pytorch.hcl
+          ${{ steps.meta.outputs.bake-file }}
+        - |
+          .github/workflows/docker-bake-pytorch-full.hcl
           ${{ steps.meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}

@@ -11,12 +11,22 @@ updates:
     interval: weekly
     day: friday
 - package-ecosystem: pip
-  directory: jupyter-pytorch-full
+  directory: jupyter-tensorflow
   schedule:
     interval: weekly
     day: friday
 - package-ecosystem: pip
   directory: jupyter-tensorflow-full
+  schedule:
+    interval: weekly
+    day: friday
+- package-ecosystem: pip
+  directory: jupyter-pytorch
+  schedule:
+    interval: weekly
+    day: friday
+- package-ecosystem: pip
+  directory: jupyter-pytorch-full
   schedule:
     interval: weekly
     day: friday
