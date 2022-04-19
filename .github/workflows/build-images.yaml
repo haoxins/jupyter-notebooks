@@ -92,62 +92,86 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Extract metadata for TensorFlow image
+    - name: Extract metadata for TensorFlow cpu image
       id: meta
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/haoxins/kubeflow-tensorflow
+          ghcr.io/haoxins/kubeflow-tensorflow-cpu
         tags: |
           type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
 
-    - name: Build and push TensorFlow image
+    - name: Build and push TensorFlow cpu image
       uses: docker/bake-action@v1
       with:
         files: |
-          .github/workflows/bake-tensorflow.hcl
+          .github/workflows/bake-tensorflow-cpu.hcl
           ${{ steps.meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Build and push TensorFlow full image
-      uses: docker/bake-action@v1
-      with:
-        files: |
-          .github/workflows/bake-tensorflow-full.hcl
-          ${{ steps.meta.outputs.bake-file }}
-        targets: bake-platform
-        push: ${{ github.event_name != 'pull_request' }}
-
-    - name: Extract metadata for PyTorch image
+    - name: Extract metadata for TensorFlow cuda image
       id: meta
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/haoxins/kubeflow-pytorch
+          ghcr.io/haoxins/kubeflow-tensorflow-cuda
         tags: |
           type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
 
-    - name: Build and push PyTorch image
+    - name: Build and push TensorFlow cuda image
       uses: docker/bake-action@v1
       with:
         files: |
-          .github/workflows/bake-pytorch.hcl
+          .github/workflows/bake-tensorflow-cuda.hcl
           ${{ steps.meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Build and push PyTorch full image
+    - name: Extract metadata for PyTorch cpu full image
+      id: meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/haoxins/kubeflow-pytorch-cpu
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+
+    - name: Build and push PyTorch cpu image
       uses: docker/bake-action@v1
       with:
         files: |
-          .github/workflows/bake-pytorch-full.hcl
+          .github/workflows/bake-pytorch-cpu.hcl
+          ${{ steps.meta.outputs.bake-file }}
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Extract metadata for PyTorch cuda image
+      id: meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/haoxins/kubeflow-pytorch-cuda
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+
+    - name: Build and push PyTorch cuda image
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-pytorch-cuda.hcl
           ${{ steps.meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
