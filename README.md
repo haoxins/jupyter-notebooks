@@ -1,7 +1,7 @@
 ## Overview
 
 * This is an open source **fork** of
-  [pluralsh/kubeflow-notebooks](https://github.com/pluralsh/kubeflow-notebooks)
+  [Kubeflow notebook servers][Kubeflow notebook servers link]
   with new features, bug fixes and different targets.
 
 * The following images are considered base images, which you can extend:
@@ -83,6 +83,7 @@
     at the end, and then use `s6-setuidgid` to run the
     user-facing services as `$NB_USER`.
 
+[Kubeflow notebook servers link]: https://github.com/kubeflow/kubeflow/tree/master/components/example-notebook-servers
 [s6 overlay link]: https://github.com/just-containers/s6-overlay
 [s6 container environment link]: https://github.com/just-containers/s6-overlay#container-environment
 [s6 writing a service script link]: https://github.com/just-containers/s6-overlay#writing-a-service-script
