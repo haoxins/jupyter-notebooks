@@ -1,0 +1,11 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory:
+  - jupyter
+  - jupyter-scipy
+  - jupyter-pytorch-full
+  - jupyter-tensorflow-full
+  schedule:
+    interval: weekly
+    day: friday
