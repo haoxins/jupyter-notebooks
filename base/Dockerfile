@@ -15,7 +15,7 @@ SHELL ["/bin/bash", "-c"]
 RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get -yq update \
   && apt-get -yq upgrade \
-  && apt-get -yq install --no-install-recommends \
+  && apt-get -yq install \
     apt-transport-https \
     bash \
     bzip2 \
