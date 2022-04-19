@@ -5,6 +5,8 @@ USER root
 ARG PIP_VERSION=22
 ARG PYTHON_VERSION=3.10
 
+RUN sudo adduser ${NB_USER}
+
 # switch to NB_UID for installs
 USER ${NB_UID}
 
@@ -14,6 +16,7 @@ RUN python3 -m pip install \
   -r /tmp/requirements.txt \
   --quiet --no-cache-dir \
   && rm -f /tmp/requirements.txt \
+  && export PATH="/home/jovyan/.local/bin:$PATH" \
   && jupyter lab --generate-config \
   && rm -rf ${HOME}/.cache/yarn \
   && chown -R ${NB_USER}:users ${HOME}

@@ -32,6 +32,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     unzip \
     vim \
     wget \
+    sudo \
     xz-utils \
     zip \
   && apt-get clean \

@@ -1,6 +1,6 @@
 #!/command/with-contenv bash
 cd "${HOME}"
-exec /usr/local/bin/jupyter lab \
+exec /home/jovyan/.local/bin/jupyter lab \
   --notebook-dir="${HOME}" \
   --ip=0.0.0.0 \
   --no-browser \
