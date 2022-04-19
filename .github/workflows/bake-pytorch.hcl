@@ -2,7 +2,7 @@ target "docker-metadata-action" {}
 
 target "bake-platform" {
   inherits = ["docker-metadata-action"]
-  context = "pytorch"
+  context = "jupyter-pytorch"
   dockerfile = "cpu.Dockerfile"
   platforms = [
     "linux/amd64",
