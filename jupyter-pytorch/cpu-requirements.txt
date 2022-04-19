@@ -1,5 +1,5 @@
 torch==1.8.1+cpu
-torchvision==0.9.1+cpu
+torchvision==0.12.0
 torchaudio==0.11.0
 
 elyra==3.7.0
