@@ -1,4 +1,4 @@
-FROM ghcr.io/haoxins/kubeflow-notebooks-jupyter-pytorch
+FROM ghcr.io/haoxins/kubeflow-pytorch
 
 USER root
 

@@ -29,12 +29,12 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Extract metadata (tags, labels) for Docker
+    - name: Extract metadata for base image
       id: meta
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/${{ github.repository }}
+          ghcr.io/haoxins/kubeflow-base
         tags: |
           type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
@@ -50,6 +50,18 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
+    - name: Extract metadata for Jupyter image
+      id: meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/haoxins/kubeflow-jupyter
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+
     - name: Build and push Jupyter image
       uses: docker/bake-action@v1
       with:
@@ -59,6 +71,18 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
+    - name: Extract metadata for SciPy image
+      id: meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/haoxins/kubeflow-scipy
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+
     - name: Build and push SciPy image
       uses: docker/bake-action@v1
       with:
@@ -67,6 +91,18 @@ jobs:
           ${{ steps.meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Extract metadata for TensorFlow image
+      id: meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/haoxins/kubeflow-tensorflow
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
 
     - name: Build and push TensorFlow image
       uses: docker/bake-action@v1
@@ -85,6 +121,18 @@ jobs:
           ${{ steps.meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Extract metadata for PyTorch image
+      id: meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/haoxins/kubeflow-pytorch
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
 
     - name: Build and push PyTorch image
       uses: docker/bake-action@v1

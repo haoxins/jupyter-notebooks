@@ -1,4 +1,4 @@
-FROM ghcr.io/haoxins/kubeflow-notebooks-base
+FROM ghcr.io/haoxins/kubeflow-base
 
 USER root
 
