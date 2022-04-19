@@ -41,30 +41,65 @@ jobs:
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
 
-    - name: Build and push Docker images (supported platforms)
+    - name: Build and push Base images (supported platforms)
       uses: docker/bake-action@v1
       with:
-        files:
-        - |
-          .github/workflows/docker-bake-base.hcl
+        files: |
+          .github/workflows/bake-base.hcl
           ${{ steps.meta.outputs.bake-file }}
-        - |
-          .github/workflows/docker-bake-jupyter.hcl
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Build and push Jupyter images (supported platforms)
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-jupyter.hcl
           ${{ steps.meta.outputs.bake-file }}
-        - |
-          .github/workflows/docker-bake-scipy.hcl
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Build and push SciPy images (supported platforms)
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-scipy.hcl
           ${{ steps.meta.outputs.bake-file }}
-        - |
-          .github/workflows/docker-bake-tensorflow.hcl
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Build and push TensorFlow images (supported platforms)
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-tensorflow.hcl
           ${{ steps.meta.outputs.bake-file }}
-        - |
-          .github/workflows/docker-bake-tensorflow-full.hcl
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Build and push TensorFlow full images (supported platforms)
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-tensorflow-full.hcl
           ${{ steps.meta.outputs.bake-file }}
-        - |
-          .github/workflows/docker-bake-pytorch.hcl
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Build and push PyTorch images (supported platforms)
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-pytorch.hcl
           ${{ steps.meta.outputs.bake-file }}
-        - |
-          .github/workflows/docker-bake-pytorch-full.hcl
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Build and push PyTorch full images (supported platforms)
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-pytorch-full.hcl
           ${{ steps.meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
