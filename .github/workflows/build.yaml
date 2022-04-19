@@ -11,8 +11,8 @@ on:
     - main
 
 jobs:
-  build-base-image:
-    name: Build Base Image
+  build-images:
+    name: Build Images
     runs-on: ubuntu-latest
     steps:
     - name: Check out the repo
@@ -41,7 +41,7 @@ jobs:
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
 
-    - name: Build and push Base images (supported platforms)
+    - name: Build and push base image
       uses: docker/bake-action@v1
       with:
         files: |
@@ -50,7 +50,7 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Build and push Jupyter images (supported platforms)
+    - name: Build and push Jupyter image
       uses: docker/bake-action@v1
       with:
         files: |
@@ -59,7 +59,7 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Build and push SciPy images (supported platforms)
+    - name: Build and push SciPy image
       uses: docker/bake-action@v1
       with:
         files: |
@@ -68,7 +68,7 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Build and push TensorFlow images (supported platforms)
+    - name: Build and push TensorFlow image
       uses: docker/bake-action@v1
       with:
         files: |
@@ -77,7 +77,7 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Build and push TensorFlow full images (supported platforms)
+    - name: Build and push TensorFlow full image
       uses: docker/bake-action@v1
       with:
         files: |
@@ -86,7 +86,7 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Build and push PyTorch images (supported platforms)
+    - name: Build and push PyTorch image
       uses: docker/bake-action@v1
       with:
         files: |
@@ -95,7 +95,7 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Build and push PyTorch full images (supported platforms)
+    - name: Build and push PyTorch full image
       uses: docker/bake-action@v1
       with:
         files: |
