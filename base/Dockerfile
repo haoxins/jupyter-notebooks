@@ -1,21 +1,17 @@
 FROM ubuntu:22.04
 
-# Common ENVs
 ENV NB_USER jovyan
 ENV NB_UID 1000
 ENV NB_PREFIX /
 ENV HOME /home/$NB_USER
 ENV SHELL /bin/bash
 
-# Args - Software versions
 ARG KUBECTL_ARCH="amd64"
 ARG KUBECTL_VERSION=v1.23.5
 ARG S6_VERSION=v3.1.0.1
 
-# Set shell to bash
 SHELL ["/bin/bash", "-c"]
 
-# Install - Linux packages
 RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get -yq update \
   && apt-get -yq upgrade \
@@ -25,6 +21,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     bzip2 \
     ca-certificates \
     curl \
+    gcc \
     git \
     locales \
     lsb-release \
