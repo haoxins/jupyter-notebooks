@@ -1,4 +1,4 @@
-FROM ghcr.io/haoxins/kubeflow-jupyter
+FROM ghcr.io/haoxins/kubeflow-jupyter:main
 
 USER root
 
