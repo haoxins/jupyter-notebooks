@@ -20,10 +20,6 @@
   `pip` packages your Kubeflow notebook
   users are likely to need.
 
-* As a guide, look at
-  [jupyter-pytorch-full.cpu](./jupyter-pytorch-full/cpu.Dockerfile)
-  for a `pip install ...` example.
-
 ### Adding apt-get packages
 
 * Extend one of the base images and install any

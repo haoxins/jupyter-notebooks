@@ -134,7 +134,7 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Extract metadata for PyTorch cpu full image
+    - name: Extract metadata for PyTorch cpu image
       id: meta
       uses: docker/metadata-action@v3
       with:
