@@ -5,3 +5,8 @@ notebook==6.4.11
 
 # New age!
 polars==0.13.23
+
+# Kubeflow
+elyra==3.7
+kfp==1.8.12
+kfp-server-api==1.8.1

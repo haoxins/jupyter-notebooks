@@ -1,14 +1,5 @@
 FROM ghcr.io/haoxins/jupyter:main
 
-USER root
-
-# update - ensure apt packages are always updated
-RUN export DEBIAN_FRONTEND=noninteractive \
-  && apt-get -yq update \
-  && apt-get -yq upgrade \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
-
 USER $NB_UID
 
 # install - requirements.txt

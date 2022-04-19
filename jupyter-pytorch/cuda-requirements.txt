@@ -2,10 +2,6 @@ torch==1.11.0+cu111
 torchvision==0.12.0+cu111
 torchaudio==0.11.0
 
-elyra==3.7.0
-kfp==2.0.0a2
-kfp-server-api==1.8.1
-
 bokeh==2.4.2
 cloudpickle==2.0.0
 dill==0.3.4
