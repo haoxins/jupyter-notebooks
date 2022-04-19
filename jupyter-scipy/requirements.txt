@@ -1,7 +1,6 @@
 # https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
 beautifulsoup4==4.11
 bokeh==2.4
-cloudpickle==2.0
 cython==0.29.28
 dask==2022.4.1
 dill==0.3.4
