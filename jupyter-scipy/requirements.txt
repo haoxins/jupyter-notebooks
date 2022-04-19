@@ -1,6 +1,6 @@
 # Kubeflow packages
 elyra==3.7
-kfp==1.8
+kfp==2.0.0
 kfp-server-api==1.8
 
 # Scipy packages
