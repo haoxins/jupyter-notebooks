@@ -30,7 +30,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Extract metadata for base image
-      id: meta
+      id: base-image-meta
       uses: docker/metadata-action@v3
       with:
         images: |
@@ -46,12 +46,12 @@ jobs:
       with:
         files: |
           .github/workflows/bake-base.hcl
-          ${{ steps.meta.outputs.bake-file }}
+          ${{ steps.base-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
     - name: Extract metadata for Jupyter image
-      id: meta
+      id: jupyter-image-meta
       uses: docker/metadata-action@v3
       with:
         images: |
@@ -67,12 +67,12 @@ jobs:
       with:
         files: |
           .github/workflows/bake-jupyter.hcl
-          ${{ steps.meta.outputs.bake-file }}
+          ${{ steps.jupyter-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
     - name: Extract metadata for SciPy image
-      id: meta
+      id: scipy-image-meta
       uses: docker/metadata-action@v3
       with:
         images: |
@@ -88,12 +88,12 @@ jobs:
       with:
         files: |
           .github/workflows/bake-scipy.hcl
-          ${{ steps.meta.outputs.bake-file }}
+          ${{ steps.scipy-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
     - name: Extract metadata for TensorFlow cpu image
-      id: meta
+      id: tf-cpu-image-meta
       uses: docker/metadata-action@v3
       with:
         images: |
@@ -109,12 +109,12 @@ jobs:
       with:
         files: |
           .github/workflows/bake-tensorflow-cpu.hcl
-          ${{ steps.meta.outputs.bake-file }}
+          ${{ steps.tf-cpu-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
     - name: Extract metadata for TensorFlow cuda image
-      id: meta
+      id: tf-cuda-image-meta
       uses: docker/metadata-action@v3
       with:
         images: |
@@ -130,12 +130,12 @@ jobs:
       with:
         files: |
           .github/workflows/bake-tensorflow-cuda.hcl
-          ${{ steps.meta.outputs.bake-file }}
+          ${{ steps.tf-cuda-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
     - name: Extract metadata for PyTorch cpu image
-      id: meta
+      id: torch-cpu-image-meta
       uses: docker/metadata-action@v3
       with:
         images: |
@@ -151,12 +151,12 @@ jobs:
       with:
         files: |
           .github/workflows/bake-pytorch-cpu.hcl
-          ${{ steps.meta.outputs.bake-file }}
+          ${{ steps.torch-cpu-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
     - name: Extract metadata for PyTorch cuda image
-      id: meta
+      id: torch-cuda-image-meta
       uses: docker/metadata-action@v3
       with:
         images: |
@@ -172,6 +172,6 @@ jobs:
       with:
         files: |
           .github/workflows/bake-pytorch-cuda.hcl
-          ${{ steps.meta.outputs.bake-file }}
+          ${{ steps.torch-cuda-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
