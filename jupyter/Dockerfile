@@ -5,7 +5,7 @@ USER root
 ARG PIP_VERSION=22
 ARG PYTHON_VERSION=3.10
 
-# RUN sudo adduser ${NB_USER}
+RUN sudo adduser ${NB_USER} sudo
 
 # switch to NB_UID for installs
 USER ${NB_UID}
