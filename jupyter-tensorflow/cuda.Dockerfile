@@ -4,18 +4,17 @@ USER root
 
 # needed for LIBNVINFER
 ARG OLD_CUDA_VERSION=11.1
-# args - software versions
+
 ARG CUDA_VERSION=11.2
 ARG CUDA_COMPAT_VERSION=460.73.01-1
 ARG CUDA_CUDART_VERSION=11.2.152-1
 ARG CUDNN_VERSION=8.1.0.77-1
 ARG LIBNVINFER_VERSION=7.2.3-1
 
-# we need bash's env var character substitution
 SHELL ["/bin/bash", "-c"]
 
-# install - cuda
-# for `cuda-compat-*`: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
+# Install - cuda
+# For `cuda-compat-*`: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
 RUN curl -sL "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub" | apt-key add - \
   && echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /" > /etc/apt/sources.list.d/cuda.list \
   && apt-get -yq update \
@@ -27,14 +26,14 @@ RUN curl -sL "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu200
   && rm -rf /var/lib/apt/lists/* \
   && ln -s /usr/local/cuda-${CUDA_VERSION} /usr/local/cuda
 
-# envs - cuda
+# cuda
 ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ENV NVIDIA_REQUIRE_CUDA "cuda>=${CUDA_VERSION}"
 
-# install - other nvidia stuff
+# Install - other nvidia stuff
 RUN curl -sL "https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu2004/x86_64/7fa2af80.pub" | apt-key add - \
   && echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list \
   && echo "deb https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list \
@@ -77,9 +76,12 @@ RUN ln -s $(which python3) /usr/local/bin/python
 
 USER $NB_UID
 
-# install - requirements.txt
+RUN export PATH="/home/jovyan/.local/bin:$PATH"
+
+# Install - requirements.txt
 COPY --chown=jovyan:users cuda-requirements.txt /tmp/requirements.txt
 RUN python3 -m pip install \
-  -r /tmp/requirements.txt --quiet --no-cache-dir \
+  -r /tmp/requirements.txt \
+  --quiet --no-cache-dir \
   && rm -f /tmp/requirements.txt \
   && jupyter lab build

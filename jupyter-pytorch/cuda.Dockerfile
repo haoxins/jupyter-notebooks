@@ -7,8 +7,12 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 
 USER $NB_UID
 
-# install - requirements.txt
+RUN export PATH="/home/jovyan/.local/bin:$PATH"
+
+# Install - requirements.txt
 COPY --chown=jovyan:users cuda-requirements.txt /tmp/requirements.txt
-RUN python3 -m pip install -r /tmp/requirements.txt --quiet --no-cache-dir \
+RUN python3 -m pip install \
+  -r /tmp/requirements.txt \
+  --quiet --no-cache-dir \
   && rm -f /tmp/requirements.txt \
   && jupyter lab build
