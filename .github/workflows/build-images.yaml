@@ -34,7 +34,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/haoxins/kubeflow-base
+          ghcr.io/haoxins/notebook
         tags: |
           type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
@@ -55,7 +55,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/haoxins/kubeflow-jupyter
+          ghcr.io/haoxins/jupyter
         tags: |
           type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
@@ -76,7 +76,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/haoxins/kubeflow-scipy
+          ghcr.io/haoxins/jupyter-scipy
         tags: |
           type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
@@ -92,24 +92,24 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Extract metadata for TensorFlow cpu image
-      id: tf-cpu-image-meta
+    - name: Extract metadata for TensorFlow image
+      id: tf-image-meta
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/haoxins/kubeflow-tensorflow-cpu
+          ghcr.io/haoxins/jupyter-tensorflow
         tags: |
           type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
 
-    - name: Build and push TensorFlow cpu image
+    - name: Build and push TensorFlow image
       uses: docker/bake-action@v1
       with:
         files: |
-          .github/workflows/bake-tensorflow-cpu.hcl
-          ${{ steps.tf-cpu-image-meta.outputs.bake-file }}
+          .github/workflows/bake-tensorflow.hcl
+          ${{ steps.tf-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
@@ -118,7 +118,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/haoxins/kubeflow-tensorflow-cuda
+          ghcr.io/haoxins/jupyter-tensorflow-cuda
         tags: |
           type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
@@ -134,24 +134,24 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    - name: Extract metadata for PyTorch cpu image
-      id: torch-cpu-image-meta
+    - name: Extract metadata for PyTorch image
+      id: torch-image-meta
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/haoxins/kubeflow-pytorch-cpu
+          ghcr.io/haoxins/jupyter-pytorch
         tags: |
           type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
 
-    - name: Build and push PyTorch cpu image
+    - name: Build and push PyTorch image
       uses: docker/bake-action@v1
       with:
         files: |
-          .github/workflows/bake-pytorch-cpu.hcl
-          ${{ steps.torch-cpu-image-meta.outputs.bake-file }}
+          .github/workflows/bake-pytorch.hcl
+          ${{ steps.torch-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
@@ -160,7 +160,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/haoxins/kubeflow-pytorch-cuda
+          ghcr.io/haoxins/jupyter-pytorch-cuda
         tags: |
           type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
