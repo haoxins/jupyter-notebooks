@@ -20,6 +20,7 @@ ENV PATH /home/jovyan/.local/bin:${PATH}
 
 RUN rm -f /tmp/requirements.txt \
   && jupyter lab --generate-config \
+  && jupyter lab build \
   && rm -rf ${HOME}/.cache/yarn \
   && chown -R ${NB_USER}:users ${HOME}
 
