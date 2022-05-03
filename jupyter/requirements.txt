@@ -1,12 +1,12 @@
-jupyterlab==3.3.4
-jupyterlab-git==0.36
-ipykernel==6.13
+jupyterlab==3.4.0
+jupyterlab-git==0.37.1
+ipykernel==6.13.0
 notebook==6.4.11
 
 # New age!
-polars==0.13.24
+polars==0.13.25
 
 # Kubeflow
-elyra==3.7
+elyra==3.8.0
 kfp==1.8.12
 kfp-server-api==1.8.1
