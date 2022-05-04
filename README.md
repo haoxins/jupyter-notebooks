@@ -2,7 +2,7 @@
 
 - This is an open source fork of
   [Kubeflow notebook servers][Kubeflow notebook servers link]
-  with new features, new packages and others.
+  with new features, latest packages and others.
 
 - The following images are considered base images, which you can extend:
   - [base](./base): The common base for all other images
@@ -32,6 +32,7 @@
 
 ### Adding container startup scripts
 
+- Some use-cases might require custom scripts to run
   during the startup of the Notebook Server container,
   or advanced users might want to add additional
   services that run inside the container.
