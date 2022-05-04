@@ -7,7 +7,7 @@
 - The following images are considered base images, which you can extend:
   - [base](./base): The common base for all other images
   - [jupyter](./jupyter): The base __JupyterLab__
-    image with built-in [Elyra][Elyra link] supports
+    image with built-in [__Elyra__][Elyra link] supports
 
 ## How do I extend these images?
 
