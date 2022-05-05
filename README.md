@@ -9,6 +9,13 @@
   - [jupyter](./jupyter): The base __JupyterLab__
     image with built-in [__Elyra__][Elyra link] supports
 
+- The [jupyter](./jupyter) built-in with:
+  - Python `v3.10`
+  - JupyterLab `v3.4`
+  - Notebook `6.4`
+  - Elyra `3.8`
+  - kfp `1.8`
+
 ## How do I extend these images?
 
 - Any changes made by users __after spawning__ a Kubeflow notebook
