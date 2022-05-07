@@ -7,6 +7,6 @@ notebook==6.4.11
 polars==0.13.25
 
 # Kubeflow
-elyra==3.8.0
+elyra==3.8.1
 kfp==1.8.12
 kfp-server-api==1.8.1
