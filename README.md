@@ -15,6 +15,9 @@
   - Notebook `6.4`
   - Elyra `3.8`
   - kfp `1.8`
+  - [jupyterlab-code-formatter][JupyterLab Code Formatter Link]
+  - black
+  - isort
 
 ## How do I extend these images?
 
@@ -92,4 +95,5 @@
 [s6 overlay link]: https://github.com/just-containers/s6-overlay
 [s6 container environment link]: https://github.com/just-containers/s6-overlay#container-environment
 [s6 writing a service script link]: https://github.com/just-containers/s6-overlay#writing-a-service-script
-[Elyra link]:https://github.com/elyra-ai/elyra
+[Elyra link]: https://github.com/elyra-ai/elyra
+[JupyterLab Code Formatter Link]: https://github.com/ryantam626/jupyterlab_code_formatter
