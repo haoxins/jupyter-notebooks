@@ -7,16 +7,14 @@ ARG PYTHON_VERSION=3.10
 
 RUN sudo adduser ${NB_USER} sudo
 
-# switch to NB_UID for installs
 USER ${NB_UID}
 
-# install - requirements.txt
+ENV PATH /home/jovyan/.local/bin:${PATH}
+
 COPY --chown=jovyan:users requirements.txt /tmp
 RUN python3 -m pip install \
   -r /tmp/requirements.txt \
   --quiet --no-cache-dir
-
-ENV PATH /home/jovyan/.local/bin:${PATH}
 
 RUN rm -f /tmp/requirements.txt \
   && jupyter lab --generate-config \

@@ -7,7 +7,6 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 
 USER $NB_UID
 
-# Install - requirements.txt
 COPY --chown=jovyan:users cuda-requirements.txt /tmp/requirements.txt
 RUN python3 -m pip install \
   -r /tmp/requirements.txt \
