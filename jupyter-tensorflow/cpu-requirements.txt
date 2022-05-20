@@ -1,4 +1,4 @@
-tensorflow==2.8
+tensorflow==2.9.0
 keras==2.9.0
 
 bokeh==2.4.3
