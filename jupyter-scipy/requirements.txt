@@ -7,7 +7,7 @@ h5py==3.7.0
 ipympl==0.9.1
 ipywidgets==7.7.0
 matplotlib==3.5.2
-numba==0.55.1
+numba==0.55.2
 numexpr==2.8.1
 pandas==1.4.2
 protobuf==3.20.1
