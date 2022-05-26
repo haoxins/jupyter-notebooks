@@ -113,23 +113,23 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
-    # - name: Extract metadata for PyTorch cuda image
-    #   id: torch-cuda-image-meta
-    #   uses: docker/metadata-action@v3
-    #   with:
-    #     images: |
-    #       ghcr.io/haoxins/jupyter-pytorch-cuda
-    #     tags: |
-    #       type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
-    #       type=sha,prefix=,format=short
-    #       type=semver,pattern={{version}}
-    #       type=semver,pattern={{major}}.{{minor}}
+    - name: Extract metadata for PyTorch cuda image
+      id: torch-cuda-image-meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/haoxins/jupyter-pytorch-cuda
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
 
-    # - name: Build and push PyTorch cuda image
-    #   uses: docker/bake-action@v1
-    #   with:
-    #     files: |
-    #       .github/workflows/bake-pytorch-cuda.hcl
-    #       ${{ steps.torch-cuda-image-meta.outputs.bake-file }}
-    #     targets: bake-platform
-    #     push: ${{ github.event_name != 'pull_request' }}
+    - name: Build and push PyTorch cuda image
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-pytorch-cuda.hcl
+          ${{ steps.torch-cuda-image-meta.outputs.bake-file }}
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
