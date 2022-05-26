@@ -1,6 +1,6 @@
 FROM ghcr.io/haoxins/jupyter:main
 
-# nvidia configs
+# Nvidia configs
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
