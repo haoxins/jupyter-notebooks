@@ -10,4 +10,4 @@ USER $NB_UID
 COPY --chown=jovyan:users cuda-requirements.txt /tmp/requirements.txt
 RUN python3 -m pip install \
   -r /tmp/requirements.txt \
-  --quiet --no-cache-dir
+  --no-cache-dir

@@ -14,7 +14,7 @@ ENV PATH /home/jovyan/.local/bin:${PATH}
 COPY --chown=jovyan:users requirements.txt /tmp
 RUN python3 -m pip install \
   -r /tmp/requirements.txt \
-  --quiet --no-cache-dir
+  --no-cache-dir
 
 RUN rm -f /tmp/requirements.txt \
   && jupyter lab --generate-config \
