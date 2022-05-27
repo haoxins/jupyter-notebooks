@@ -5,11 +5,10 @@
   with new features, latest packages and others.
 
 - The following images are considered base images, which you can extend:
-  - [base](./base): The common base for all other images
-  - [jupyter](./jupyter): The base __JupyterLab__
+  - [Jupyter](./jupyter): The base __JupyterLab__
     image with built-in [__Elyra__][Elyra link] supports
 
-- The [jupyter](./jupyter) built-in with:
+- The [Jupyter](./jupyter) built-in with:
   - Python `v3.10`
   - JupyterLab `v3.4`
   - Notebook `6.4`

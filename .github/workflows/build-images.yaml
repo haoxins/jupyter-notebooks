@@ -29,27 +29,6 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Extract metadata for base image
-      id: base-image-meta
-      uses: docker/metadata-action@v3
-      with:
-        images: |
-          ghcr.io/haoxins/notebook
-        tags: |
-          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
-          type=sha,prefix=,format=short
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-
-    - name: Build and push base image
-      uses: docker/bake-action@v1
-      with:
-        files: |
-          .github/workflows/bake-base.hcl
-          ${{ steps.base-image-meta.outputs.bake-file }}
-        targets: bake-platform
-        push: ${{ github.event_name != 'pull_request' }}
-
     - name: Extract metadata for Jupyter image
       id: jupyter-image-meta
       uses: docker/metadata-action@v3
