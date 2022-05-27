@@ -63,7 +63,7 @@ RUN useradd -M -s /bin/bash -N -u ${NB_UID} ${NB_USER} \
   && chown -R ${NB_USER}:users /usr/local/bin \
   && chown -R ${NB_USER}:users /etc/s6-overlay \
   && chown -R ${NB_USER}:users /command \
-  && sudo adduser ${NB_USER}:users sudo
+  && echo "${NB_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Set locale configs
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
