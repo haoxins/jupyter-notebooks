@@ -10,7 +10,7 @@ matplotlib==3.5.2
 numba==0.55.2
 numexpr==2.8.1
 pandas==1.4.2
-protobuf==3.20.1
+protobuf==4.21.0
 scikit-learn==1.1.1
 scipy==1.8.1
 seaborn==0.11.2
