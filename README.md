@@ -9,10 +9,10 @@
     image with built-in [__Elyra__][Elyra link] supports
 
 - The [Jupyter](./jupyter) built-in with:
-  - Python `v3.10`
-  - JupyterLab `v3.4`
+  - Python `3.10`
+  - JupyterLab `3.4`
   - Notebook `6.4`
-  - Elyra `3.8`
+  - Elyra `3.9`
   - kfp `1.8`
   - [jupyterlab-code-formatter][JupyterLab Code Formatter Link]
   - black
