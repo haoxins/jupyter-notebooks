@@ -16,4 +16,4 @@ polars==0.13.55
 # Kubeflow
 elyra==3.10.0
 kfp==1.8.12
-kfp-server-api==1.8.2
+kfp-server-api==1.8.3
