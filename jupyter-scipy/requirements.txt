@@ -1,6 +1,6 @@
 # https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
 bokeh==2.4.3
-cython==0.29.30
+cython==0.29.32
 dask==2022.7.0
 dill==0.3.5.1
 h5py==3.7.0
