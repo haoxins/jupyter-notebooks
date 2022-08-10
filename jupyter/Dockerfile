@@ -6,8 +6,6 @@ ENV NB_PREFIX /
 ENV HOME /home/$NB_USER
 ENV SHELL /bin/bash
 
-ARG KUBECTL_ARCH="amd64"
-ARG KUBECTL_VERSION=v1.24.0
 ARG S6_VERSION=v3.1.0.1
 
 ARG PYTHON_VERSION=3.10
@@ -48,13 +46,6 @@ ADD https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION
 RUN tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz
 ADD https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-x86_64.tar.xz /tmp
 RUN tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz
-
-# Install - kubectl
-RUN curl -sL "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${KUBECTL_ARCH}/kubectl" -o /usr/local/bin/kubectl \
-  && curl -sL "https://dl.k8s.io/${KUBECTL_VERSION}/bin/linux/${KUBECTL_ARCH}/kubectl.sha256" -o /tmp/kubectl.sha256 \
-  && echo "$(cat /tmp/kubectl.sha256) /usr/local/bin/kubectl" | sha256sum --check \
-  && rm /tmp/kubectl.sha256 \
-  && chmod +x /usr/local/bin/kubectl
 
 # Create user and set required ownership
 RUN useradd -M -s /bin/bash -N -u ${NB_UID} ${NB_USER} \
