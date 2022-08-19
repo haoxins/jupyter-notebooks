@@ -5,7 +5,7 @@ notebook==6.4.12
 jupyterlab-code-formatter==1.5.3
 
 # Common
-numpy==1.23.1
+numpy==1.23.2
 requests==2.28.1
 black<=21.12b0
 isort==5.10.1
