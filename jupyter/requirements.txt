@@ -7,7 +7,7 @@ jupyterlab-code-formatter==1.5.3
 # Common
 numpy==1.23.2
 requests==2.28.1
-black<=21.12b0
+black<22.7
 isort==5.10.1
 
 # New age!
