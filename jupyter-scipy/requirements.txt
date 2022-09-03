@@ -9,7 +9,7 @@ ipywidgets==8.0.1
 matplotlib==3.5.3
 numba==0.56.2
 numexpr==2.8.3
-pandas==1.4.3
+pandas==1.4.4
 protobuf==4.21.5
 scikit-learn==1.1.2
 scipy==1.9.0
