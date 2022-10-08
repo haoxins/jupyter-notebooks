@@ -12,7 +12,7 @@ black<=21.12b0
 isort==5.10.1
 
 # New age!
-polars==0.14.15
+polars==0.14.18
 
 # Kubeflow
 elyra==3.12.0
