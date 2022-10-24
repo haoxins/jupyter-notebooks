@@ -2,7 +2,6 @@
 cython==0.29.32
 dask==2022.10.0
 h5py==3.7.0
-matplotlib==3.6.1
 numba==0.56.3
 numexpr==2.8.3
 protobuf==4.21.8

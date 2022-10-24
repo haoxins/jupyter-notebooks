@@ -1,4 +1,3 @@
 torch==1.12.1
 
-matplotlib==3.6.1
 xgboost==1.6.2
