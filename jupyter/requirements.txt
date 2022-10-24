@@ -6,6 +6,7 @@ jupyterlab-code-formatter==1.5.3
 ipywidgets==8.0.2
 
 # Common
+bokeh==2.4.3
 dill==0.3.5.1
 numpy==1.23.4
 pandas==1.5.1
