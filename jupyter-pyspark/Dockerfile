@@ -4,7 +4,6 @@ RUN apt-get update && apt-get install curl wget telnet gcc -y;
 USER jovyan
 ENV NB_PREFIX /
 
-#!/command/with-contenv bash
 CMD jupyter lab \
   --ip=0.0.0.0 \
   --no-browser \
