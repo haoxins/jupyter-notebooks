@@ -112,3 +112,24 @@ jobs:
           ${{ steps.torch-cuda-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Extract metadata for PySpark image
+      id: pyspark-image-meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/haoxins/jupyter-pyspark
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+
+    - name: Build and push PySpark image
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-pyspark.hcl
+          ${{ steps.pyspark-image-meta.outputs.bake-file }}
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
