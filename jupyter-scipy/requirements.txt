@@ -5,5 +5,5 @@ h5py==3.7.0
 numba==0.56.4
 numexpr==2.8.4
 protobuf==4.21.9
-statsmodels==0.13.2
+statsmodels==0.13.5
 sympy==1.11.1
