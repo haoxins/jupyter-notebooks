@@ -135,7 +135,7 @@ jobs:
         push: ${{ github.event_name != 'pull_request' }}
 
     - name: Extract metadata for PySpark 3.7 image
-      id: pyspark-image-meta
+      id: pyspark37-image-meta
       uses: docker/metadata-action@v3
       with:
         images: |
@@ -151,6 +151,6 @@ jobs:
       with:
         files: |
           .github/workflows/bake-pyspark37.hcl
-          ${{ steps.pyspark-image-meta.outputs.bake-file }}
+          ${{ steps.pyspark37-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
