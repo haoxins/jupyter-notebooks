@@ -133,3 +133,24 @@ jobs:
           ${{ steps.pyspark-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Extract metadata for PySpark 3.7 image
+      id: pyspark37-image-meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/haoxins/jupyter-pyspark37
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+
+    - name: Build and push PySpark 3.7 image
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-pyspark37.hcl
+          ${{ steps.pyspark37-image-meta.outputs.bake-file }}
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
