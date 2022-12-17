@@ -1,5 +1,5 @@
 jupyterlab==3.5.0
-jupyterlab-git==0.40.1
+jupyterlab-git==0.41.0
 ipykernel==6.19.2
 notebook==6.5.2
 jupyterlab-code-formatter==1.5.3
