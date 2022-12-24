@@ -25,7 +25,7 @@ isort==5.10.1
 polars==0.15.8
 
 # Kubeflow
-elyra==3.13.0
+elyra==3.14.1
 kfp==1.8.12
 kfp-server-api==1.8.5
 
