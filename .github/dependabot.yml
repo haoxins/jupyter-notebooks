@@ -6,11 +6,6 @@ updates:
     interval: weekly
     day: friday
 - package-ecosystem: pip
-  directory: jupyter-scipy
-  schedule:
-    interval: weekly
-    day: friday
-- package-ecosystem: pip
   directory: jupyter-pytorch
   schedule:
     interval: weekly
