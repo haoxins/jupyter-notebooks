@@ -19,7 +19,7 @@ seaborn==0.12.1
 
 # Formatting
 black<22.13
-isort==5.11.4
+isort==5.10.1
 
 # New age!
 polars==0.15.8
