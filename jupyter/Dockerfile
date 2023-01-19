@@ -72,11 +72,12 @@ RUN python3 -m pip install \
   -r /tmp/requirements.txt \
   --no-cache-dir
 
-RUN rm -f /tmp/requirements.txt \
-  && jupyter lab --generate-config \
-  && jupyter lab build \
-  && rm -rf ${HOME}/.cache/yarn \
-  && chown -R ${NB_USER}:users ${HOME}
+# TODO fix deps
+#RUN rm -f /tmp/requirements.txt \
+#  && jupyter lab --generate-config \
+#  && jupyter lab build \
+#  && rm -rf ${HOME}/.cache/yarn \
+#  && chown -R ${NB_USER}:users ${HOME}
 
 # s6 - copy scripts
 COPY --chown=jovyan:users s6/ /etc
