@@ -20,7 +20,7 @@ seaborn==0.12.1
 # Formatting
 black<22.13
 isort==5.10.1
-jsonschema==4.2.1
+jsonschema<4.0
 
 # New age!
 polars==0.15.8
