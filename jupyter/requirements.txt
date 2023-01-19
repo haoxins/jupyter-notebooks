@@ -23,7 +23,7 @@ isort==5.10.1
 jsonschema
 
 # New age!
-polars==0.15.8
+polars==0.15.15
 
 # Kubeflow
 elyra==3.14.1
