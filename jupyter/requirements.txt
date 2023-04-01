@@ -27,7 +27,7 @@ polars==0.16.3
 
 # Kubeflow
 elyra==3.14.1
-kfp==1.8.12
+kfp==2.0.0
 kfp-server-api==1.8.5
 
 # https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
