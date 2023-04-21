@@ -26,7 +26,7 @@ jsonschema
 polars==0.17.3
 
 # Kubeflow
-elyra==3.14.1
+elyra==3.15.0
 kfp==1.8.12
 kfp-server-api==1.8.5
 
