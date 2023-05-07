@@ -28,6 +28,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     lsb-release \
     nodejs \
     npm \
+    pkg-config \
     python3 \
     python3-pip \
     software-properties-common \
