@@ -68,7 +68,7 @@ USER ${NB_UID}
 # Install - Rust
 
 RUN curl -sSf https://sh.rustup.rs | sh -s -- -y \
-  && /home/jovyan/.cargo/bin/rustup install nightly
+  && /home/jovyan/.cargo/bin/rustup install nightly \
   && /home/jovyan/.cargo/bin/rustup default nightly
 
 ENV PATH /home/jovyan/.local/bin:/home/jovyan/.cargo/bin:${PATH}
