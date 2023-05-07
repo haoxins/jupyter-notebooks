@@ -65,7 +65,13 @@ ENV LC_ALL en_US.UTF-8
 
 USER ${NB_UID}
 
-ENV PATH /home/jovyan/.local/bin:${PATH}
+# Install - Rust
+
+RUN curl -sSf https://sh.rustup.rs | sh -s -- -y \
+  && /home/jovyan/.cargo/bin/rustup install nightly
+  && /home/jovyan/.cargo/bin/rustup default nightly
+
+ENV PATH /home/jovyan/.local/bin:/home/jovyan/.cargo/bin:${PATH}
 
 COPY --chown=jovyan:users requirements.txt /tmp
 RUN python3 -m pip install \
