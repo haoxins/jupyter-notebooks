@@ -19,10 +19,12 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get -yq install \
     apt-transport-https \
     bash \
+    build-essential \
     bzip2 \
     ca-certificates \
     curl \
     gcc \
+    gfortran \
     git \
     locales \
     lsb-release \
