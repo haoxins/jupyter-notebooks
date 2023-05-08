@@ -10,9 +10,11 @@
 
 - The [Jupyter](./jupyter) built-in with:
   - Python `3.10`
-  - JupyterLab `3.4`
-  - Notebook `6.4`
-  - Elyra `3.9`
+  - JupyterLab `3.5`
+  - Notebook `6.5`
+  - Rust toolchain nightly
+  - [Lance](https://github.com/eto-ai/lance)
+  - Elyra `3.15`
   - kfp `1.8`
   - [jupyterlab-code-formatter][JupyterLab Code Formatter Link]
   - black
