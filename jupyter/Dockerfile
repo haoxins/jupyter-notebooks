@@ -19,16 +19,19 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get -yq install \
     apt-transport-https \
     bash \
+    build-essential \
     bzip2 \
     ca-certificates \
     curl \
     gcc \
+    gfortran \
     git \
     locales \
     lsb-release \
     nodejs \
     npm \
     pkg-config \
+    protobuf-compiler \
     python3 \
     python3-pip \
     software-properties-common \
