@@ -1,9 +1,9 @@
+ipykernel==6.22.0
+ipywidgets==8.0.6
 jupyterlab==3.5.2
 jupyterlab-git==0.41.0
-ipykernel==6.22.0
-notebook==6.5.3
 jupyterlab-code-formatter==1.6.1
-ipywidgets==8.0.6
+notebook==6.5.3
 
 # Common
 bokeh==3.1.0
@@ -41,3 +41,7 @@ numba==0.56.4
 numexpr==2.8.4
 statsmodels==0.13.5
 sympy==1.11.1
+
+# PyTorch
+torch==2.0.0
+xgboost==1.7.5
