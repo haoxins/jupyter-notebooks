@@ -9,7 +9,7 @@ ENV SHELL /bin/bash
 ARG S6_VERSION=v3.1.1.2
 
 ARG PYTHON_VERSION=3.10
-ARG PIP_VERSION=22
+ARG PIP_VERSION=23
 
 SHELL ["/bin/bash", "-c"]
 
@@ -75,6 +75,7 @@ RUN curl -sSf https://sh.rustup.rs | sh -s -- -y \
 ENV PATH /home/jovyan/.local/bin:/home/jovyan/.cargo/bin:${PATH}
 
 COPY --chown=jovyan:users requirements.txt /tmp
+RUN python3 -m pip install maturin
 RUN python3 -m pip install \
   -r /tmp/requirements.txt \
   --no-cache-dir
