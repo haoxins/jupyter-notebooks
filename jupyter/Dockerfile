@@ -31,6 +31,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     nodejs \
     npm \
     pkg-config \
+    protobuf-compiler \
     python3 \
     python3-pip \
     software-properties-common \
