@@ -44,5 +44,5 @@ statsmodels==0.13.5
 sympy==1.11.1
 
 # PyTorch
-torch==2.0.0
-xgboost==1.7.5
+# torch==2.0.0
+# xgboost==1.7.5
