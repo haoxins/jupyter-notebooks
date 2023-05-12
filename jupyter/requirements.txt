@@ -1,6 +1,6 @@
 ipykernel==6.22.0
 ipywidgets==8.0.6
-jupyterlab==3.5.2
+jupyterlab==3.6.3
 jupyterlab-git==0.41.0
 jupyterlab-code-formatter==1.6.1
 notebook==6.5.3
