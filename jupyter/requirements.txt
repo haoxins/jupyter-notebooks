@@ -42,7 +42,3 @@ numba==0.56.4
 numexpr==2.8.4
 statsmodels==0.13.5
 sympy==1.11.1
-
-# PyTorch
-# torch==2.0.0
-# xgboost==1.7.5
