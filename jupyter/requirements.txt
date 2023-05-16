@@ -4,9 +4,6 @@ jupyterlab==4.0.0
 jupyterlab-git==0.41.0
 jupyterlab-code-formatter==2.0.0
 notebook==6.5.4
-# copier
-# jinja2-time
-# tomli-w
 
 # Common
 bokeh==3.1.1
