@@ -25,7 +25,7 @@ jsonschema
 # New age!
 lancedb==0.1.2
 polars==0.17.6
-pylance==0.4.9
+pylance==0.4.13
 
 # Kubeflow
 # elyra==3.15.0
