@@ -24,7 +24,7 @@ jsonschema
 
 # New age!
 lancedb==0.1.2
-polars==0.17.14
+polars==0.18.0
 pylance==0.4.13
 
 # Kubeflow
