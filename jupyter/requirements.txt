@@ -9,13 +9,12 @@ notebook==6.5.4
 bokeh==3.1.1
 dill==0.3.6
 ipympl==0.9.3
-matplotlib==3.7.1
 numpy==1.23.5
 pandas==2.0.2
 requests==2.30.0
 scikit-learn==1.2.2
 scipy==1.10.1
-seaborn==0.12.2
+plotly==5.14.1
 
 # Formatting
 black<23.4
