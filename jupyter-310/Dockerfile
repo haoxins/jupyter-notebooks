@@ -69,6 +69,13 @@ ENV LC_ALL en_US.UTF-8
 
 USER ${NB_UID}
 
+ENV PATH /home/jovyan/.local/bin:${PATH}
+
+COPY --chown=jovyan:users requirements.txt /tmp
+RUN python3 -m pip install \
+  -r /tmp/requirements.txt \
+  --no-cache-dir
+
 # s6 - copy scripts
 COPY --chown=jovyan:users s6/ /etc
 
