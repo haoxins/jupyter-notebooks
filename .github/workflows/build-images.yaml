@@ -67,7 +67,7 @@ jobs:
       with:
         files: |
           .github/workflows/bake-jupyter-310.hcl
-          ${{ steps.jupyter-image-meta.outputs.bake-file }}
+          ${{ steps.jupyter-image-310-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
