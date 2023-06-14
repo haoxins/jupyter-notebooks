@@ -69,26 +69,6 @@ ENV LC_ALL en_US.UTF-8
 
 USER ${NB_UID}
 
-# Install - Rust
-
-RUN curl -sSf https://sh.rustup.rs | sh -s -- -y \
-  && /home/jovyan/.cargo/bin/rustup install nightly \
-  && /home/jovyan/.cargo/bin/rustup default nightly
-
-ENV PATH /home/jovyan/.local/bin:/home/jovyan/.cargo/bin:${PATH}
-
-COPY --chown=jovyan:users requirements.txt /tmp
-RUN python3 -m pip install maturin
-RUN python3 -m pip install \
-  -r /tmp/requirements.txt \
-  --no-cache-dir
-
-# TODO fix deps
-#RUN rm -f /tmp/requirements.txt \
-#  && jupyter lab --generate-config \
-#  && jupyter lab build \
-#  && chown -R ${NB_USER}:users ${HOME}
-
 # s6 - copy scripts
 COPY --chown=jovyan:users s6/ /etc
 
