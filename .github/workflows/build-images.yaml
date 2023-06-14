@@ -50,6 +50,27 @@ jobs:
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
 
+    - name: Extract metadata for Jupyter 3.10 image
+      id: jupyter-image-3.10-meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/haoxins/jupyter-310
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+
+    - name: Build and push Jupyter 3.10 image
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-jupyter-310.hcl
+          ${{ steps.jupyter-image-meta.outputs.bake-file }}
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
+
     - name: Extract metadata for PySpark image
       id: pyspark-image-meta
       uses: docker/metadata-action@v3
