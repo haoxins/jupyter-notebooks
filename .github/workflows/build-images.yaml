@@ -51,7 +51,7 @@ jobs:
         push: ${{ github.event_name != 'pull_request' }}
 
     - name: Extract metadata for Jupyter 3.10 image
-      id: jupyter-image-3.10-meta
+      id: jupyter-image-310-meta
       uses: docker/metadata-action@v3
       with:
         images: |
