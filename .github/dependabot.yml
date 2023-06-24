@@ -5,8 +5,3 @@ updates:
   schedule:
     interval: weekly
     day: friday
-- package-ecosystem: pip
-  directory: jupyter-pytorch
-  schedule:
-    interval: weekly
-    day: friday
