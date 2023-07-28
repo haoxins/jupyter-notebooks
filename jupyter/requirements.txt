@@ -8,7 +8,7 @@ notebook==6.5.4
 # Common
 bokeh==3.2.1
 dask==2023.7.0
-dill==0.3.6
+dill==0.3.7
 ipympl==0.9.3
 numpy==1.25.0
 pandas==2.0.2
