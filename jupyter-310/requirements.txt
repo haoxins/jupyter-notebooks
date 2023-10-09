@@ -8,18 +8,18 @@ notebook==6.5.4
 bokeh==3.1.1
 dask==2023.6.0
 dill==0.3.6
-gspread==5.9.0
 ipympl==0.9.3
-lightgbm==3.3.5
-networkx==3.1
+lightgbm==4.1.0
+networkx==2.8.5
 numpy==1.24.3
-pandas==2.0.2
-pandas_gbq==0.19.2
+pandas==2.1.1
+pandas_gbq
+papermill==2.4.0
 requests==2.31.0
 scikit-learn==1.2.2
 scipy==1.10.1
 statsmodels==0.14.0
-xgboost==1.7.5
+xgboost==2.0.0
 
 # Formatting
 black<23.4
@@ -30,3 +30,18 @@ jsonschema
 kfp==1.8.21
 kfpx==0.2.3
 kfp-server-api==1.8.5
+
+onnxmltools==1.11.2
+skl2onnx==1.15.0
+onnx==1.14.1
+onnxruntime=1.16.0
+
+google-cloud-bigquery
+google-cloud-storage
+gspread
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+google-auth
+matplotlib
+seaborn
