@@ -31,4 +31,4 @@ pylance==0.5.3
 # Kubeflow
 # elyra==3.15.0
 kfpx==0.3.1
-kfp-server-api==1.8.5
+kfp-server-api==2.0.3
