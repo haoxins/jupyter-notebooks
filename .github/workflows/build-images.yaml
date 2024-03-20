@@ -118,7 +118,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          ghcr.io/haoxins/jupyter-py310-jdk11
+          ghcr.io/haoxins/py310-jdk11
         tags: |
           type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
           type=sha,prefix=,format=short
