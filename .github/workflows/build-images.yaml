@@ -112,3 +112,24 @@ jobs:
           ${{ steps.pyspark37-image-meta.outputs.bake-file }}
         targets: bake-platform
         push: ${{ github.event_name != 'pull_request' }}
+
+    - name: Extract metadata for Python3.10 with JDK11 image
+      id: py310-jdk11-image-meta
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/haoxins/jupyter-py310-jdk11
+        tags: |
+          type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+          type=sha,prefix=,format=short
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+
+    - name: Build and push Python3.10 with JDK11 image
+      uses: docker/bake-action@v1
+      with:
+        files: |
+          .github/workflows/bake-py310-jdk11.hcl
+          ${{ steps.py310-jdk11-image-meta.outputs.bake-file }}
+        targets: bake-platform
+        push: ${{ github.event_name != 'pull_request' }}
