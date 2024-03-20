@@ -72,6 +72,8 @@ USER ${NB_UID}
 ENV PATH /home/jovyan/.local/bin:${PATH}
 
 COPY --chown=jovyan:users requirements.txt /tmp
+
+RUN python3 -m pip install pyyaml==5.4.1 --no-build-isolation
 RUN python3 -m pip install \
   -r /tmp/requirements.txt \
   --no-cache-dir
