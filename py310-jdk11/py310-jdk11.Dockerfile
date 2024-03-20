@@ -10,9 +10,6 @@ RUN mkdir /app
 COPY dockerfiles/rm_matplotlib_cache.py /app/rm_matplotlib_cache.py
 COPY dockerfiles/DCube-2.0.jar /app/DCube-2.0.jar
 COPY dockerfiles/my_nbconvert.py /app/my_nbconvert.py
-COPY plugins/utils/gitlab_util.py /app/gitlab_util.py
-COPY plugins/utils/slack_util.py /app/slack_util.py
-COPY plugins/utils/opsgenie_util.py /app/opsgenie_util.py
 
 RUN pip install "cython<3.0.0" wheel && pip install pyyaml==5.4.1 --no-build-isolation
 COPY dockerfiles/py310-jdk11.requirements.txt /app/requirements.txt
