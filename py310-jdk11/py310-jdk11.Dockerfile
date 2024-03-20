@@ -7,9 +7,9 @@ RUN apt update && apt install -y google-cloud-cli
 RUN apt install -y openjdk-11-jdk
 
 RUN mkdir /app
-COPY dockerfiles/rm_matplotlib_cache.py /app/rm_matplotlib_cache.py
-COPY dockerfiles/DCube-2.0.jar /app/DCube-2.0.jar
-COPY dockerfiles/my_nbconvert.py /app/my_nbconvert.py
+COPY rm_matplotlib_cache.py /app/rm_matplotlib_cache.py
+COPY DCube-2.0.jar /app/DCube-2.0.jar
+COPY my_nbconvert.py /app/my_nbconvert.py
 
 RUN pip install "cython<3.0.0" wheel && pip install pyyaml==5.4.1 --no-build-isolation
 COPY dockerfiles/py310-jdk11.requirements.txt /app/requirements.txt
