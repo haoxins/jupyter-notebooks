@@ -34,7 +34,7 @@ kfp-server-api==1.8.5
 onnxmltools==1.11.2
 skl2onnx==1.15.0
 onnx==1.14.1
-onnxruntime=1.16.0
+onnxruntime==1.16.0
 
 google-cloud-bigquery
 google-cloud-storage
