@@ -12,7 +12,7 @@ COPY DCube-2.0.jar /app/DCube-2.0.jar
 COPY my_nbconvert.py /app/my_nbconvert.py
 
 RUN pip install "cython<3.0.0" wheel && pip install pyyaml==5.4.1 --no-build-isolation
-COPY dockerfiles/py310-jdk11.requirements.txt /app/requirements.txt
+COPY py310-jdk11.requirements.txt /app/requirements.txt
 RUN pip install --use-feature=fast-deps  -r /app/requirements.txt
 
 
